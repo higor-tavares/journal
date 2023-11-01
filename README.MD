@@ -1,4 +1,4 @@
-# Simple Flask Reste Aplication CRUD
+# Simple flask rest application crud
 This is a sample prof of concept from a rest api using python and flask with in memory crud operations
 
 ## Requirements
