@@ -14,4 +14,4 @@ finaly run the application with `make run`.
 access http://localhost:5000/products and see an empty product list
 ## Adding the first product
 run the command bellow to create a simple product with a name and a price in cents
-`curl -X POST http://localhost:5000/products/myProductName -d '{"price":8990}'`
+`curl  -H 'Content-Type:application/json' -X POST http://localhost:5000/products/myProductName -d '{"price":8990}'`
