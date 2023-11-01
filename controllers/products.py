@@ -9,10 +9,10 @@ class Products(Resource):
 
 class ProductController(Resource):
     def get(self, product_name):
-        for product in products:
-            if product['product'] == product_name:
-                return product
-            return {'message':'Product not found'}, 404
+        product = self.find_product(product_name)
+        if product:
+            return product, 200
+        return {'message':'Product not found'}, 404
         
     def post(self, product_name):
         args = reqparse.RequestParser()
@@ -24,3 +24,9 @@ class ProductController(Resource):
     
     def delete(self, product_name):
         pass
+
+    def find_product(self, product_name):
+        for product in products:
+            if product['product'] == product_name:
+                return product
+        return None
