@@ -12,7 +12,7 @@ First, configure your virtual enviroment with the command bellow
 and then install all the requirements with the command `make install`
 finaly run the application with `make run`.
 access http://localhost:5000 and see an empty journal
-## Adding the first product
+## Adding the first journal entry
 run the command bellow to create a simple journal
 ```
 curl -X POST http://localhost:5000/salary \
