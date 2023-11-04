@@ -1,4 +1,5 @@
 import boto3
+from boto3.dynamodb.conditions import Key
 
 class JournalDao():
     def __init__(self, dynamodbConnection):
@@ -20,3 +21,17 @@ class JournalDao():
                 'entryDate': item.entryDate
             }
         )
+    
+    def get(self, username, id):
+        response = self.table.get_item(
+            Key={
+                'username': username,
+                'id': id
+            }
+        )
+        return response['Item']
+    
+    def find_by_username(self, usename):
+        return self.table.query(
+            KeyConditionExpression=Key('username').eq(usename)
+        )['Items']
