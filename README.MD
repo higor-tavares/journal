@@ -20,7 +20,7 @@ run the command bellow to create a simple journal
 ```
 curl -X POST http://localhost:5000/salary \
  -H "Content-Type:application/json" \
--d '{ "description":"Salary", "type":"CREDIT", "amount":264200 }'
+-d '{ "username":"paulohtfreire", "description":"Salary", "type":"CREDIT", "amount":264200 }'
 ```
 ## Create Journal table
 run `docker-compose up -d` to create the local DynamoDB database

@@ -1,5 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.journal_entry import JournalEntryEntity
+from database.database_connection import DynamoDBConnection
+from database.journal_dao import JournalDao
 
 entries = []
 
@@ -8,6 +10,9 @@ class Journal(Resource):
         return {'entries': entries}
 
 class JournalEntry(Resource):
+    def __init__(self):
+        self.dao = JournalDao(DynamoDBConnection.get_connection())
+
     def get(self, id):
         journalEntry = self.find_journal_entry(id)
         if journalEntry:
@@ -17,12 +22,14 @@ class JournalEntry(Resource):
     def post(self, id):
         args = reqparse.RequestParser()
         args.add_argument('description')
+        args.add_argument('username')
         args.add_argument('amount')
         args.add_argument('type')
         data = args.parse_args()
-        new_entry = JournalEntryEntity(id=id, **data).get_journal_entry()
-        entries.append(new_entry)
-        return new_entry, 201
+        new_entry = JournalEntryEntity(id=id, **data)
+        self.dao.create(new_entry)
+        entries.append(new_entry.get_journal_entry())
+        return new_entry.get_journal_entry(), 201
     
     def delete(self, id):
         pass
