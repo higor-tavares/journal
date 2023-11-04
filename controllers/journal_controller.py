@@ -10,7 +10,11 @@ class Journal(Resource):
 
     def get(self):
         username = request.args['username']
-        return {'entries': self.dao.find_by_username(username)}     
+        entries = self.dao.find_by_username(username)
+        return {
+            'entries': entries,
+            'length': len(entries)
+            }     
       
     def post(self):
         args = reqparse.RequestParser()
@@ -22,3 +26,9 @@ class Journal(Resource):
         new_entry = JournalEntryEntity(id=str(uuid.uuid4()), **data)
         self.dao.create(new_entry)
         return new_entry.get_journal_entry(), 201
+    
+    def delete(self):
+        username = request.args['username']
+        id = request.args['id']
+        self.dao.delete_item(username, id)
+        return 204  

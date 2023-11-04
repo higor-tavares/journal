@@ -34,3 +34,11 @@ class JournalDao():
         return self.table.query(
             KeyConditionExpression=Key('username').eq(usename)
         )['Items']
+
+    def delete_item(self, username, id):
+        self.table.delete_item(
+              Key={
+                'username': username,
+                'id': id
+            }
+        )
