@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse, request
 from models.journal_entry import JournalEntryEntity
-from database.database_connection import DynamoDBConnection
+from database.local_database_connection import DynamoDBConnection
 from database.journal_dao import JournalDao
 import uuid
 
