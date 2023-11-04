@@ -37,7 +37,7 @@ aws dynamodb --endpoint-url http://localhost:8000 create-table --table-name jour
 To create a new journal entry, run the following command:
 ```bash
 curl -X POST http://localhost:5000/ \
- -H "Content-Type:application/json" \
+-H "Content-Type:application/json" \
 -d '{ "username":"your_user", "description":"Salary", "type":"CREDIT", "amount":264200 }'
 ```
 ### Deleting a Journal Entry
