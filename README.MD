@@ -18,7 +18,7 @@ access http://localhost:5000 and see an empty journal
 ## Adding the first journal entry
 run the command bellow to create a simple journal
 ```
-curl -X POST http://localhost:5000/salary \
+curl -X POST http://localhost:5000/ \
  -H "Content-Type:application/json" \
 -d '{ "username":"paulohtfreire", "description":"Salary", "type":"CREDIT", "amount":264200 }'
 ```
