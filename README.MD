@@ -21,7 +21,7 @@ You can now access the application at http://localhost:5000?username=your_user. 
 ## Database Configuration
 To set up the local instance of DynamoDB:
 
-Run docker-compose up -d. This starts the database running on port 8000.
+Run `docker-compose up -d`. This starts the database running on port 8000.
 Create the journal table by running the following command:
 
 ```bash
