@@ -22,7 +22,7 @@ class JournalDao():
             }
         )
     
-    def get(self, username, id):
+    def get_item(self, username, id):
         response = self.table.get_item(
             Key={
                 'username': username,
